@@ -14,7 +14,7 @@
 	</a>
 </p>
 
-一套基于模版的代码生成器, 可以通过模版文件, 生成任意的代码
+一套基于模版的代码生成器, 可以通过模版文件, 生成任意代码
 
 ## 获取代码
 ```
@@ -46,12 +46,12 @@ vim generator.properties
 
 ## 模版与配置变量说明
 
-- 关于模版的语法请参考[beetl文档](http://ibeetl.com/guide/#/beetl/), 其他定界符项目中修改成@了, 可通过beetl.properties修改
-- generator.properties文件中所有配置都可以直接在模版文件中使用(其中包括文件内容,文件名,目录), 使用${key}的方式获取
+- 关于模版的语法请参考[beetl文档](http://ibeetl.com/guide/#/beetl/), 项目中定界符已设置为@, 可通过beetl.properties修改
+- generator.properties文件中所有的配置内容, 都可以直接在模版文件中使用(其中包括文件内容,文件名,目录), 使用${key}的方式获取
 ```
 示例: ${author}, ${version}
 ```
-- 要基于数据库的表生成相关代码则需要正确配置, 相关的模版可以参考示例文件
+- 要基于数据库的表生成相关代码则需要正确配置以下内容, 相关的模版可以参考示例文件
 ```
 tableNames = rbac_user, rbac_role
 dbUrl = jdbc:mysql://10.6.6.3:3306/euaa_devdb
