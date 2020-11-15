@@ -85,7 +85,7 @@ beetl循环示例:
 
 变量名 | 使用示例 |示例结果| 说明|
 ---|---|---|---|
-tableName| ${.tableName} | sys_user | 表名 |
+tableName| ${c.tableName} | sys_user | 表名 |
 columnName| ${c.columnName} | user_name | 列名 |
 dataType| ${c.dataType} | varchar | 列在数据库中的类型 |
 columnComment| ${c.columnComment} | 用户账号 | 列的注释 |
