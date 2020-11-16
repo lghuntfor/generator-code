@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="${packageName}.mapper.${data.className}Mapper">
+
+	<resultMap id="BaseResultMap" type="${packageName}.domain.${data.className}">
+		@for(c in data.columnList){
+		<result column="${c.columnName}" property="${c.propertyName}" javaType="${c.fullJavaType}" />
+		@}
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		@for(c in data.columnList){
+			@if(cLP.last){
+			`${c.columnName}`
+			@} else {
+			`${c.columnName}`,
+			@}
+		@}
+	</sql>
+
+</mapper>

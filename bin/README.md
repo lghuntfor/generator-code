@@ -1,48 +1,10 @@
-## Generator-Code
-<p align="center">
-	<a target="_blank" href="https://license.coscl.org.cn/MulanPSL2/">
-		<img src="https://img.shields.io/:license-MulanPSL2-blue.svg" />
-	</a>
-	<a target="_blank" href="https://www.oracle.com/technetwork/java/javase/downloads/index.html">
-		<img src="https://img.shields.io/badge/JDK-8+-green.svg" />
-	</a>
-	<a target="_blank" href="https://github.com/lghuntfor/generator-code">
-		<img src="https://img.shields.io/badge/Github-welcome-brightgreen.svg" />
-	</a>
-	<a target="_blank" href="https://gitee.com/lghuntfor/generator-code">
-		<img src="https://img.shields.io/badge/Gitee-welcome-brightgreen.svg" />
-	</a>
-</p>
+### 代码生成器使用说明
 
-一套基于模版的代码生成器, 可以通过模版文件, 生成任意代码
+* 使用前先配置generator.properties
+* 到template目录可修改对应文件的模版
+* 配置好后, 直接双击start.bat/start.sh即可
+* 生成好的代码默认当前文件夹code目录下
 
-## 获取代码
-```
-Github: git clone https://github.com/lghuntfor/generator-code.git
-Gitee: git clone https://gitee.com/lghuntfor/generator-code.git
-```
-
-## 快速开始
-执行命令   
-```
-cd generator-code
-mvn package -Dmaven.test.skip=true
-```
-
-在target/output目录下就是最终可执行文件   
-```
-cd target/output
-```
-
-修改配置文件
-```
-vim generator.properties
-```
-
-运行代码生成器
-```
-执行 start.sh 或 start.bat
-```
 
 ## 模版与配置变量说明
 

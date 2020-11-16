@@ -15,6 +15,9 @@ public class TableInfo {
     /** 表名 */
     private String tableName;
 
+    /** 表名全小写 */
+    private String lowerTableName;
+
     /** 表注释 */
     private String tableComment;
 
@@ -26,4 +29,8 @@ public class TableInfo {
 
     /** 表对应的实体类名, 首字母小写 */
     private String lowerClassName;
+
+    /** 实体类名对应的http路径名, 如SysUser对应sys-user */
+    private String urlPath;
+
 }

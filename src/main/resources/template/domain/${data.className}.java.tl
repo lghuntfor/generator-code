@@ -22,10 +22,12 @@ import java.math.BigDecimal;
 \@TableName(value = "${data.tableName}", excludeProperty = {})
 public class ${data.className} extends BaseDomain implements Serializable {
 
-	\@TableId(type = IdType.AUTO)
 @for(c in data.columnList){
     @if(isNotEmpty(c.columnComment)){
     /**${c.columnComment}*/
+    @}
+	@if(c.primary){
+    \@TableId(type = IdType.AUTO)
     @}
     private ${c.javaType} ${c.propertyName};
 

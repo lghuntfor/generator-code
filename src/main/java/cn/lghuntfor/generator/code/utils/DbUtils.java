@@ -95,11 +95,13 @@ public class DbUtils {
      */
     private static void putTableInfo(TableInfo tableInfo, String prefix) {
         String tableName = tableInfo.getTableName();
+        tableInfo.setLowerTableName(tableName.toLowerCase());
         String tempTableName = tableName.replace(prefix, "");
 
         String lowerClassName = StrUtil.toCamelCase(tempTableName);
         tableInfo.setLowerClassName(lowerClassName);
         tableInfo.setClassName(StrUtil.upperFirst(lowerClassName));
+        tableInfo.setUrlPath(StrUtil.toSymbolCase(lowerClassName, '-'));
     }
 
     /**
@@ -125,42 +127,52 @@ public class DbUtils {
             columnInfo.setFullJavaType("java.lang.Integer");
             columnInfo.setBaseJavaType("int");
             columnInfo.setJavaType("Integer");
+            columnInfo.setJsonType("integer");
         } else if (StrUtil.equalsAnyIgnoreCase(dbType, "tinyint")) {
             columnInfo.setFullJavaType("java.lang.Byte");
             columnInfo.setBaseJavaType("byte");
             columnInfo.setJavaType("Byte");
+            columnInfo.setJsonType("integer");
         } else if (StrUtil.equalsAnyIgnoreCase(dbType, "bigint")) {
             columnInfo.setFullJavaType("java.lang.Long");
             columnInfo.setBaseJavaType("long");
             columnInfo.setJavaType("Long");
+            columnInfo.setJsonType("number");
         } else if (StrUtil.equalsAnyIgnoreCase(dbType, "varchar", "text", "longtext", "char")) {
             columnInfo.setFullJavaType("java.lang.String");
             columnInfo.setBaseJavaType("String");
             columnInfo.setJavaType("String");
+            columnInfo.setJsonType("string");
         } else if (StrUtil.equalsAnyIgnoreCase(dbType, "numeric", "double")) {
             columnInfo.setFullJavaType("java.lang.Double");
             columnInfo.setBaseJavaType("double");
             columnInfo.setJavaType("Double");
+            columnInfo.setJsonType("number");
         } else if (StrUtil.equalsAnyIgnoreCase(dbType, "float")) {
             columnInfo.setFullJavaType("java.lang.Float");
             columnInfo.setBaseJavaType("float");
             columnInfo.setJavaType("Float");
+            columnInfo.setJsonType("number");
         } else if (StrUtil.equalsAnyIgnoreCase(dbType, "decimal")) {
             columnInfo.setFullJavaType("java.math.BigDecimal");
             columnInfo.setBaseJavaType("BigDecimal");
             columnInfo.setJavaType("BigDecimal");
+            columnInfo.setJsonType("number");
         } else if (StrUtil.equalsAnyIgnoreCase(dbType, "datetime", "timestamp", "date", "time")) {
             columnInfo.setFullJavaType("java.util.Date");
             columnInfo.setBaseJavaType("Date");
             columnInfo.setJavaType("Date");
+            columnInfo.setJsonType("string");
         } else if (StrUtil.equalsAnyIgnoreCase(dbType, "boolean", "bit")) {
             columnInfo.setFullJavaType("java.lang.Boolean");
             columnInfo.setBaseJavaType("boolean");
             columnInfo.setJavaType("Boolean");
+            columnInfo.setJsonType("boolean");
         } else {
             columnInfo.setFullJavaType("java.lang.Object");
             columnInfo.setBaseJavaType("Object");
             columnInfo.setJavaType("Object");
+            columnInfo.setJavaType("object");
         }
     }
 }
