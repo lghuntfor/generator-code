@@ -43,7 +43,7 @@ public class ${data.className}Controller extends BaseController {
      * \@date ${date(),"yyyy-MM-dd HH:mm:ss"}
      * \@return com.ndccloud.commons.common.result.ReturnData
      **/
-    \@PostMapping("/${data.lowerClassName}")
+    \@PostMapping("/${data.urlPath}")
 	\@ApiOperation(value = "新增接口", tags = "${data.tableComment}")
     public ReturnData<${data.className}VO> add(\@RequestBody \@Validated ${data.className}AddVO addVO) {
         return ${data.lowerClassName}Service.save(addVO);
@@ -57,7 +57,7 @@ public class ${data.className}Controller extends BaseController {
      * \@date ${date(),"yyyy-MM-dd HH:mm:ss"}
      * \@return com.ndccloud.commons.common.result.ReturnData
      **/
-    \@PutMapping("/${data.lowerClassName}")
+    \@PutMapping("/${data.urlPath}")
 	\@ApiOperation(value = "编辑接口", tags = "${data.tableComment}")
     public ReturnData<${data.className}VO> edit(\@RequestBody \@Validated ${data.className}EditVO editVO) {
         return ${data.lowerClassName}Service.update(editVO);
@@ -71,7 +71,7 @@ public class ${data.className}Controller extends BaseController {
      * \@date ${date(),"yyyy-MM-dd HH:mm:ss"}
      * \@return com.ndccloud.commons.common.result.ReturnData
      **/
-    \@GetMapping("/${data.lowerClassName}")
+    \@GetMapping("/${data.urlPath}")
 	\@ApiOperation(value = "列表分页接口", tags = "${data.tableComment}")
     public ReturnData<PageInfo<${data.className}ListVO>> page(${data.className}ListQuery query) {
 		PageInfo<${data.className}ListVO> page = ${data.lowerClassName}Service.page(query);
@@ -86,7 +86,7 @@ public class ${data.className}Controller extends BaseController {
      * \@date ${date(),"yyyy-MM-dd HH:mm:ss"}
      * \@return com.ndccloud.commons.common.result.ReturnData
      **/
-    \@GetMapping("/${data.lowerClassName}/{id}")	
+    \@GetMapping("/${data.urlPath}/{id}")	
 	\@ApiOperation(value = "详情接口", tags = "${data.tableComment}")
 	\@ApiImplicitParams({
 		\@ApiImplicitParam(dataType = "Long", name = "id", value = "记录id", required = true , example = "1")
@@ -107,7 +107,7 @@ public class ${data.className}Controller extends BaseController {
      * \@date ${date(),"yyyy-MM-dd HH:mm:ss"}
      * \@return com.ndccloud.commons.common.result.ReturnData
      **/
-    \@DeleteMapping("/${data.lowerClassName}")
+    \@DeleteMapping("/${data.urlPath}")
 	\@ApiOperation(value = "批量删除接口", tags = "${data.tableComment}")
 	\@ApiImplicitParams({
 		\@ApiImplicitParam(dataType = "array", name = "ids", value = "记录id数组", required = true , example = "1")
@@ -125,7 +125,7 @@ public class ${data.className}Controller extends BaseController {
      * \@date ${date(),"yyyy-MM-dd HH:mm:ss"}
      * \@return com.ndccloud.commons.common.result.ReturnData
      **/
-	\@PutMapping("/${data.lowerClassName}/{operation}")
+	\@PutMapping("/${data.urlPath}/{operation}")
 	\@ApiOperation(value = "批量更新操作接口", tags = "${data.tableComment}")
 	\@ApiImplicitParams({
 		\@ApiImplicitParam(dataTypeClass = List.class, name = "ids", value = "记录id数组", required = true , example = "1"),
