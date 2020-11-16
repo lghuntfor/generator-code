@@ -9,7 +9,7 @@
     <version>1.0</version>
 
     <properties>
-        <output-dir>output</output-dir>
+        <output-dir>generator-code</output-dir>
     </properties>
 
     <dependencies>

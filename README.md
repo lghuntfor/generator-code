@@ -29,9 +29,9 @@ cd generator-code
 mvn package -Dmaven.test.skip=true
 ```
 
-在target/output目录下就是最终可执行文件   
+在target/generator-code目录下就是最终可执行文件   
 ```
-cd target/output
+cd target/generator-code
 ```
 
 修改配置文件
