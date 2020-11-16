@@ -82,6 +82,7 @@ public class GeneratorUtils {
 
         /** 输出结果文件 */
         codeList.forEach(code -> {
+            System.out.println("write file: " + code.getPath());
             FileUtil.writeUtf8String(code.getContent(), code.getPath());
         });
     }
@@ -103,10 +104,21 @@ public class GeneratorUtils {
             if (fileName.endsWith(Const.TEMPLATE_SUFFIX_TL)) {
                 fileName = fileName.substring(0, fileName.lastIndexOf(Const.TEMPLATE_SUFFIX_TL));
             }
-            dir = TemplateUtils.parseText(dir, params);
+            String parsePath;
+            if (Const.UNIX_FILE_SEPARATOR.equals(FileUtils.getFileSeparator())) {
+                dir = TemplateUtils.parseText(dir, params);
+                parsePath = dir.replaceAll("\\.", FileUtils.getFileSeparator())
+                        + FileUtils.getFileSeparator() + fileName;
+            } else {
+                /** \要转义做特殊处理 */
+                dir = dir.replaceAll(Const.WIN_FILE_SEPARATOR_REGEX, Const.WIN_FILE_SEPARATOR_ESCAPE);
+                dir = TemplateUtils.parseText(dir, params);
+                dir = dir.replaceAll(Const.WIN_FILE_SEPARATOR_ESCAPE, Const.WIN_FILE_SEPARATOR_REGEX);
 
-            String parsePath = dir.replaceAll("\\.", FileUtils.getFileSeparator())
-                    + FileUtils.getFileSeparator() + fileName;
+                /** 将包名中可能出现的.转成文件分隔符 */
+                parsePath = dir.replaceAll("\\.", Const.WIN_FILE_SEPARATOR_REGEX)
+                        + FileUtils.getFileSeparator() + fileName;
+            }
             template.setParseRelativePath(parsePath.replace(config.getTemplateDir(), ""));
         });
     }

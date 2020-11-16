@@ -28,4 +28,10 @@ public interface Const {
     String DEFAULT_OUTPUT_DIR = "code";
 
     String TEMPLATE_SUFFIX_TL = ".tl";
+
+    /** 文件分隔符 */
+    String WIN_FILE_SEPARATOR = "\\";
+    String WIN_FILE_SEPARATOR_REGEX = "\\\\";
+    String WIN_FILE_SEPARATOR_ESCAPE = "%5C";
+    String UNIX_FILE_SEPARATOR = "/";
 }

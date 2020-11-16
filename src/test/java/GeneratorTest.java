@@ -1,5 +1,6 @@
 import cn.hutool.core.util.StrUtil;
 import cn.lghuntfor.generator.code.common.Const;
+import cn.lghuntfor.generator.code.utils.FileUtils;
 import cn.lghuntfor.generator.code.utils.GeneratorUtils;
 import cn.lghuntfor.generator.code.utils.JarUtils;
 import cn.lghuntfor.generator.code.utils.TemplateUtils;
@@ -43,6 +44,6 @@ public class GeneratorTest {
      */
     @Test
     public void testGenerator() throws Exception {
-        GeneratorUtils.startGenerator(JarUtils.getJarDir() + "/" + Const.DEFAULT_CONFIG_NAME);
+        GeneratorUtils.startGenerator(JarUtils.getJarDir() + FileUtils.getFileSeparator() + Const.DEFAULT_CONFIG_NAME);
     }
 }
