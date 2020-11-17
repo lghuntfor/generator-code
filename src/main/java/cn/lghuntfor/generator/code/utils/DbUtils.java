@@ -96,7 +96,7 @@ public class DbUtils {
     private static void putTableInfo(TableInfo tableInfo, String prefix) {
         String tableName = tableInfo.getTableName();
         tableInfo.setLowerTableName(tableName.toLowerCase());
-        String tempTableName = tableName.replace(prefix, "");
+        String tempTableName = tableName.replaceFirst(prefix, "");
 
         String lowerClassName = StrUtil.toCamelCase(tempTableName);
         tableInfo.setLowerClassName(lowerClassName);
