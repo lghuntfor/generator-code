@@ -30,6 +30,9 @@ public class ConfigUtils {
         tableNames = tableNames.trim();
         configInfo.setTableNames(StrUtil.split(tableNames, ',', true, true));
 
+        String baseProps = props.getStr(Const.KEY_BASE_PROPS);
+        configInfo.setBaseProps(StrUtil.split(baseProps, ',', true, true));
+
         String dbUrl = props.getStr(Const.KEY_DB_URL);
         String dbUser = props.getStr(Const.KEY_DB_USER);
         String dbPass = props.getStr(Const.KEY_DB_PASS);

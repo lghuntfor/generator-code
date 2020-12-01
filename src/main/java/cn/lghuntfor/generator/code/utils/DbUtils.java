@@ -65,8 +65,8 @@ public class DbUtils {
             Map<String, List<ColumnInfo>> columnMap = columnInfoList.stream().collect(Collectors.groupingBy(ColumnInfo::getTableName));
             for (Entity table : tableList) {
                 TableInfo tableInfo = table.toBean(TableInfo.class);
-                putTableInfo(tableInfo, configInfo.getPrefix());
                 tableInfo.setColumnList(columnMap.get(tableInfo.getTableName()));
+                putTableInfo(tableInfo, configInfo);
                 tableInfoList.add(tableInfo);
             }
             return tableInfoList;
@@ -91,17 +91,29 @@ public class DbUtils {
     /**
      * 设置表与实体相关的信息
      * @param tableInfo
-     * @param prefix
+     * @param config
      */
-    private static void putTableInfo(TableInfo tableInfo, String prefix) {
+    private static void putTableInfo(TableInfo tableInfo, ConfigInfo config) {
         String tableName = tableInfo.getTableName();
         tableInfo.setLowerTableName(tableName.toLowerCase());
-        String tempTableName = tableName.replaceFirst(prefix, "");
+        String tempTableName = tableName.replaceFirst(config.getPrefix(), "");
 
         String lowerClassName = StrUtil.toCamelCase(tempTableName);
         tableInfo.setLowerClassName(lowerClassName);
         tableInfo.setClassName(StrUtil.upperFirst(lowerClassName));
         tableInfo.setUrlPath(StrUtil.toSymbolCase(lowerClassName, '-'));
+
+        List<ColumnInfo> columnList = tableInfo.getColumnList();
+        List<String> columnNames = columnList.stream().map(ColumnInfo::getColumnName).collect(Collectors.toList());
+        tableInfo.setColumnNames(columnNames);
+        List<String> propertyNames = columnList.stream().map(ColumnInfo::getPropertyName).collect(Collectors.toList());
+        tableInfo.setColumnNames(propertyNames);
+
+        List<String> baseProps = config.getBaseProps();
+        if (CollUtil.isNotEmpty(baseProps)) {
+            List<String> excludeProps = baseProps.stream().filter(p -> !propertyNames.contains(p)).collect(Collectors.toList());
+            tableInfo.setExcludeProps(excludeProps);
+        }
     }
 
     /**

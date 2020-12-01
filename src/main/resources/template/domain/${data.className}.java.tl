@@ -19,7 +19,14 @@ import java.math.BigDecimal;
  * \@version ${version}
  */
 \@Data
-\@TableName(value = "${data.tableName}", excludeProperty = {})
+\@TableName(value = "${data.tableName}", excludeProperty = {@for(p in data.excludeProps){
+                                                                @if(pLP.last){
+                                                                    @print("\""+p+"\"");
+                                                                @} else {
+                                                                    @print("\""+p+"\",");
+                                                                @}
+                                                            @}
+})
 public class ${data.className} extends BaseDomain implements Serializable {
 
 @for(c in data.columnList){

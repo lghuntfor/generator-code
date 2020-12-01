@@ -33,6 +33,9 @@ public class ConfigInfo {
     /** 需要生成的表名 */
     private List<String> tableNames;
 
+    /** 基础的字段 */
+    private List<String> baseProps;
+
     /** 模版文件的根目录, 可配置, 默认为当前jar所在的template目录 */
     private String templateDir;
 

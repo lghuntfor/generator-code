@@ -70,6 +70,9 @@ className| ${data.className} | SysUser | 表对应的实体类, 驼峰规则, �
 lowerClassName| ${data.lowerClassName} | sysUser | 实体类名的首字母小写 |
 urlPath| ${data.urlPath} | sys-user | 实体类名对应的http路径名, 如SysUser对应sys-user |
 columnList| ${data.columnList} | - | 数据表中的所有列数据, 通常需要使用循环语句才可使用 |
+columnNames| ${data.columnNames} | [id, user_name] | 表中的所有列名集合 |
+propertyNames| ${data.propertyNames} | [id, userName] | 表中的所有字段名集合 |
+excludeProps| ${data.excludeProps} | [id, userName] | mybatis-plus中要排除的属性名 |
 
 ```
 beetl循环示例:

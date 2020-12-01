@@ -15,6 +15,7 @@ public interface Const {
 
     /** 其他的一些配置key */
     String KEY_DB_NAME = "dbName";
+    String KEY_BASE_PROPS = "baseProps";
     String KEY_PREFIX = "prefix";
     String KEY_TEMPLATE_DIR = "templateDir";
     String KEY_OUTPUT_DIR = "outputDir";

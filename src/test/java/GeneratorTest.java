@@ -30,6 +30,7 @@ public class GeneratorTest {
         params.put("tableName", "rbac_user");
         String[] tableNames = {"rbac_user", "rbac_role"};
         params.put("tableNames", "'" + StrUtil.join("','", tableNames) + "'");
+        params.put("tableNames", tableNames);
         String sql = TemplateUtils.parseClasspathFile(Const.QUERY_TABLE_TEMPLATE_FILE, params);
         System.out.println(sql);
 
