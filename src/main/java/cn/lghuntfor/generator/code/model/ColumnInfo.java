@@ -52,4 +52,16 @@ public class ColumnInfo {
     /** 接口返回的类型 */
     private String jsonType;
 
+    /** 该字段在表中的顺序位置 */
+    private Integer ordinalPosition;
+
+    /** 字符相关类型的字段的最大限制长度 */
+    private Integer characterMaximumLength;
+
+    /** 数值类型整数位的长度限制 */
+    private Integer numericPrecision;
+
+    /** 数值类型小数位的精度 */
+    private Integer numericScale;
+
 }

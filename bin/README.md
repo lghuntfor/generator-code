@@ -62,6 +62,10 @@ upperPropertyName| ${c.upperPropertyName} | UserName | 列对应的实体属性�
 javaType| ${c.javaType} | String | 属性的java类型 |
 baseJavaType| ${c.baseJavaType} | - | 属性的java类型对应的基本类型, 只有基本类型才会存在 |
 fullJavaType| ${c.fullJavaType} | java.lang.String | 属性的java类型的全类名 |
+ordinalPosition| ${c.ordinalPosition} | 2 | 该字段在表中的顺序位置 |
+characterMaximumLength| ${c.characterMaximumLength} | 10 | 字符相关类型的字段的最大限制长度 |
+numericPrecision| ${c.numericPrecision} | 10 | 数值类型整数位的长度限制 |
+numericScale| ${c.numericScale} | 6 | 数值类型小数位的精度 |
 
 ## 模版内函数调用
 [参考函数调用文档](http://ibeetl.com/guide/#/beetl/basic?id=%e5%87%bd%e6%95%b0%e8%b0%83%e7%94%a8)   
