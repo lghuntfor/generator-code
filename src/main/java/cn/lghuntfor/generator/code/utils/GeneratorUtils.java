@@ -104,20 +104,26 @@ public class GeneratorUtils {
             if (fileName.endsWith(Const.TEMPLATE_SUFFIX_TL)) {
                 fileName = fileName.substring(0, fileName.lastIndexOf(Const.TEMPLATE_SUFFIX_TL));
             }
-            String parsePath;
-            if (Const.UNIX_FILE_SEPARATOR.equals(FileUtils.getFileSeparator())) {
-                dir = TemplateUtils.parseText(dir, params);
-                parsePath = dir.replaceAll("\\.", FileUtils.getFileSeparator())
-                        + FileUtils.getFileSeparator() + fileName;
+            String parsePath = "";
+            boolean hasVariable = dir.contains(Const.TEMPLATE_SYMBOL);
+            if (!hasVariable) {
+                parsePath = dir + FileUtils.getFileSeparator() + fileName;
             } else {
-                /** \要转义做特殊处理 */
-                dir = dir.replaceAll(Const.WIN_FILE_SEPARATOR_REGEX, Const.WIN_FILE_SEPARATOR_ESCAPE);
-                dir = TemplateUtils.parseText(dir, params);
-                dir = dir.replaceAll(Const.WIN_FILE_SEPARATOR_ESCAPE, Const.WIN_FILE_SEPARATOR_REGEX);
+                /** 文件目录含模版变量时的解析 */
+                if (Const.UNIX_FILE_SEPARATOR.equals(FileUtils.getFileSeparator())) {
+                    dir = TemplateUtils.parseText(dir, params);
+                    parsePath = dir.replaceAll("\\.", FileUtils.getFileSeparator())
+                            + FileUtils.getFileSeparator() + fileName;
+                } else {
+                    /** \要转义做特殊处理 */
+                    dir = dir.replaceAll(Const.WIN_FILE_SEPARATOR_REGEX, Const.WIN_FILE_SEPARATOR_ESCAPE);
+                    dir = TemplateUtils.parseText(dir, params);
+                    dir = dir.replaceAll(Const.WIN_FILE_SEPARATOR_ESCAPE, Const.WIN_FILE_SEPARATOR_REGEX);
 
-                /** 将包名中可能出现的.转成文件分隔符 */
-                parsePath = dir.replaceAll("\\.", Const.WIN_FILE_SEPARATOR_REGEX)
-                        + FileUtils.getFileSeparator() + fileName;
+                    /** 将包名中可能出现的.转成文件分隔符 */
+                    parsePath = dir.replaceAll("\\.", Const.WIN_FILE_SEPARATOR_REGEX)
+                            + FileUtils.getFileSeparator() + fileName;
+                }
             }
             template.setParseRelativePath(parsePath.replace(config.getTemplateDir(), ""));
         });

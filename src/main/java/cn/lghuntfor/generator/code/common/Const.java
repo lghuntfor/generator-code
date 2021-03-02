@@ -27,6 +27,7 @@ public interface Const {
 
     String DEFAULT_TEMPLATE_DIR = "template";
     String DEFAULT_OUTPUT_DIR = "code";
+    String TEMPLATE_SYMBOL = "$";
 
     String TEMPLATE_SUFFIX_TL = ".tl";
 
